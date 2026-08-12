@@ -1,0 +1,18 @@
+{
+  "version": 2,
+  "publishedAt": "",
+  "settings": {
+    "title": "ilgiveyoumyeyes",
+    "subtitle": "Photo portfolio",
+    "name": "ilgiveyoumyeyes",
+    "tagline": "Small pictures, quietly kinetic.",
+    "about": "Personal photo work. Browse the reel, or open a folder in the catalogue.",
+    "instagram": "https://www.instagram.com/ilgiveyoumyeyes/",
+    "github": "",
+    "email": "",
+    "autoDrift": true,
+    "speed": 30
+  },
+  "folders": [],
+  "photos": []
+}
