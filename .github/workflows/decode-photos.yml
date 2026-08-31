@@ -31,37 +31,56 @@ jobs:
           if not staging.exists():
               print("no staging dir")
               sys.exit(0)
-          parts = defaultdict(list)
-          for f in staging.iterdir():
-              if not f.is_file():
-                  continue
-              m = re.fullmatch(r"([0-9a-f-]{36})\.p(\d+)", f.name)
-              if not m:
-                  print("skip", f.name)
-                  continue
-              parts[m.group(1)].append((int(m.group(2)), f))
-          ok = []
-          for uid, items in sorted(parts.items()):
-              items.sort()
-              blob = "".join(p.read_text() for _, p in items)
+
+          def write_jpeg(uid, blob, source):
               blob = "".join(blob.split())
               try:
                   data = base64.b64decode(blob, validate=False)
               except Exception as e:
-                  print("b64 fail", uid, e)
-                  continue
-              if data[:2] != b"\xff\xd8":
-                  print("not jpeg yet", uid, "parts", len(items), "nbytes", len(data))
-                  continue
+                  print("b64 fail", uid, source, e)
+                  return False
+              if data[:2] != b"\\xff\\xd8"[:2] and data[:2] != bytes([255, 216]):
+                  print("not jpeg yet", uid, source, "nbytes", len(data))
+                  return False
               dest = photos / (uid + ".jpg")
               dest.write_bytes(data)
-              print(dest, len(data), "parts", len(items), "ok")
-              ok.append(uid)
+              print(dest, len(data), source, "ok")
+              return True
+
+          ok = []
+          b64_uids = set()
+          for f in staging.iterdir():
+              if not f.is_file():
+                  continue
+              m = re.fullmatch(r"([0-9a-f-]{36})\\.b64", f.name)
+              if not m:
+                  continue
+              uid = m.group(1)
+              b64_uids.add(uid)
+              if write_jpeg(uid, f.read_text(), "b64"):
+                  ok.append(uid)
+
+          parts = defaultdict(list)
+          for f in staging.iterdir():
+              if not f.is_file():
+                  continue
+              m = re.fullmatch(r"([0-9a-f-]{36})\\.p(\\d+)", f.name)
+              if not m:
+                  continue
+              uid = m.group(1)
+              if uid in b64_uids:
+                  continue
+              parts[uid].append((int(m.group(2)), f))
+          for uid, items in sorted(parts.items()):
+              items.sort()
+              blob = "".join(p.read_text() for _, p in items)
+              if write_jpeg(uid, blob, f"parts:{len(items)}"):
+                  ok.append(uid)
           print("decoded", len(ok), ok)
           if set(ok) < set(needed):
               print("waiting for all six valid jpegs")
               sys.exit(0)
-          pathlib.Path(".decode-ok").write_text("ok\n")
+          pathlib.Path(".decode-ok").write_text("ok\\n")
           PY
           if [ ! -f .decode-ok ]; then
             echo "not ready"
