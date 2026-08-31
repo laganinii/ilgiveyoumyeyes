@@ -23,8 +23,8 @@
       "order": 0,
       "folderId": "",
       "src": "photos/509392df-5228-42c2-9d29-444c882c4715.jpg",
-      "width": 1920,
-      "height": 1086
+      "width": 1400,
+      "height": 792
     },
     {
       "id": "21161c6c-4ffe-4599-93ec-6726fce105fa",
@@ -33,8 +33,8 @@
       "order": 1,
       "folderId": "",
       "src": "photos/21161c6c-4ffe-4599-93ec-6726fce105fa.jpg",
-      "width": 1276,
-      "height": 1920
+      "width": 1064,
+      "height": 1600
     },
     {
       "id": "da20cf6b-9cda-483c-984d-2c8a053bb53e",
@@ -43,8 +43,8 @@
       "order": 0,
       "folderId": "",
       "src": "photos/da20cf6b-9cda-483c-984d-2c8a053bb53e.jpg",
-      "width": 1920,
-      "height": 1920
+      "width": 1400,
+      "height": 1400
     },
     {
       "id": "bc45140c-5d06-495f-8f6b-071de5c2d0b6",
@@ -53,8 +53,8 @@
       "order": 1,
       "folderId": "",
       "src": "photos/bc45140c-5d06-495f-8f6b-071de5c2d0b6.jpg",
-      "width": 1276,
-      "height": 1920
+      "width": 1064,
+      "height": 1600
     },
     {
       "id": "b7343179-561d-4ae9-adde-01e8a772a3d6",
@@ -63,8 +63,8 @@
       "order": 0,
       "folderId": "",
       "src": "photos/b7343179-561d-4ae9-adde-01e8a772a3d6.jpg",
-      "width": 1920,
-      "height": 1276
+      "width": 1600,
+      "height": 1064
     },
     {
       "id": "0b49e3fb-f77b-4467-be57-dffc3c845f69",
@@ -73,8 +73,8 @@
       "order": 1,
       "folderId": "",
       "src": "photos/0b49e3fb-f77b-4467-be57-dffc3c845f69.jpg",
-      "width": 1439,
-      "height": 1920
+      "width": 824,
+      "height": 1100
     }
   ]
 }
