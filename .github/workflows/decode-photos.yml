@@ -15,9 +15,19 @@ jobs:
         run: |
           set -euo pipefail
           python3 <<'PY'
-          import base64, pathlib, sys
+          import base64, pathlib, re, sys
           from collections import defaultdict
           staging = pathlib.Path("staging")
+          photos = pathlib.Path("photos")
+          photos.mkdir(exist_ok=True)
+          needed = [
+            "509392df-5228-42c2-9d29-444c882c4715",
+            "21161c6c-4ffe-4599-93ec-6726fce105fa",
+            "da20cf6b-9cda-483c-984d-2c8a053bb53e",
+            "bc45140c-5d06-495f-8f6b-071de5c2d0b6",
+            "b7343179-561d-4ae9-adde-01e8a772a3d6",
+            "0b49e3fb-f77b-4467-be57-dffc3c845f69",
+          ]
           if not staging.exists():
               print("no staging dir")
               sys.exit(0)
@@ -25,28 +35,39 @@ jobs:
           for f in staging.iterdir():
               if not f.is_file():
                   continue
-              if ".p" not in f.name:
+              m = re.fullmatch(r"([0-9a-f-]{36})\.p(\d+)", f.name)
+              if not m:
+                  print("skip", f.name)
                   continue
-              uid, part = f.name.rsplit(".p", 1)
-              parts[uid].append((part, f))
-          print("photos staged", len(parts), "ids", sorted(parts))
-          if len(parts) != 6:
-              print("waiting for 6 photos")
-              sys.exit(0)
-          photos = pathlib.Path("photos")
-          photos.mkdir(exist_ok=True)
+              parts[m.group(1)].append((int(m.group(2)), f))
+          ok = []
           for uid, items in sorted(parts.items()):
               items.sort()
               blob = "".join(p.read_text() for _, p in items)
-              data = base64.b64decode(blob)
+              blob = "".join(blob.split())
+              try:
+                  data = base64.b64decode(blob, validate=False)
+              except Exception as e:
+                  print("b64 fail", uid, e)
+                  continue
               if data[:2] != b"\xff\xd8":
-                  raise SystemExit("not jpeg: %s head=%r parts=%d" % (uid, data[:8], len(items)))
+                  print("not jpeg yet", uid, "parts", len(items), "nbytes", len(data))
+                  continue
               dest = photos / (uid + ".jpg")
               dest.write_bytes(data)
               print(dest, len(data), "parts", len(items), "ok")
+              ok.append(uid)
+          print("decoded", len(ok), ok)
+          if set(ok) < set(needed):
+              print("waiting for all six valid jpegs")
+              sys.exit(0)
+          pathlib.Path(".decode-ok").write_text("ok\n")
           PY
-          test -f photos/509392df-5228-42c2-9d29-444c882c4715.jpg
-          rm -rf staging
+          if [ ! -f .decode-ok ]; then
+            echo "not ready"
+            exit 0
+          fi
+          rm -rf staging .decode-ok
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
