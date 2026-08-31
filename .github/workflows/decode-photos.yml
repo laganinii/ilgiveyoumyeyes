@@ -64,7 +64,7 @@ jobs:
           for f in staging.iterdir():
               if not f.is_file():
                   continue
-              m = re.fullmatch(r"([0-9a-f-]{36})[.]p(\\d+)", f.name)
+              m = re.fullmatch(r"([0-9a-f-]{36})[.]p([0-9]+)", f.name)
               if not m:
                   continue
               uid = m.group(1)
