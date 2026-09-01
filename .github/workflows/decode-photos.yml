@@ -3,6 +3,7 @@ on:
   push:
     paths:
       - "staging/**"
+      - "photo-b64/**"
   workflow_dispatch:
 jobs:
   decode:
@@ -17,7 +18,7 @@ jobs:
           python3 <<'PY'
           import base64, pathlib, re, sys
           from collections import defaultdict
-          staging = pathlib.Path("staging")
+          staging_dirs = [pathlib.Path("photo-b64"), pathlib.Path("staging")]
           photos = pathlib.Path("photos")
           photos.mkdir(exist_ok=True)
           needed = [
@@ -28,9 +29,6 @@ jobs:
             "b7343179-561d-4ae9-adde-01e8a772a3d6",
             "0b49e3fb-f77b-4467-be57-dffc3c845f69",
           ]
-          if not staging.exists():
-              print("no staging dir")
-              sys.exit(0)
 
           def write_jpeg(uid, blob, source):
               blob = "".join(blob.split())
@@ -49,31 +47,36 @@ jobs:
 
           ok = []
           b64_uids = set()
-          for f in staging.iterdir():
-              if not f.is_file():
-                  continue
+          files = []
+          for staging in staging_dirs:
+              if staging.exists():
+                  files.extend([f for f in staging.iterdir() if f.is_file()])
+
+          for f in files:
               m = re.fullmatch(r"([0-9a-f-]{36})[.]b64", f.name)
               if not m:
                   continue
               uid = m.group(1)
               b64_uids.add(uid)
-              if write_jpeg(uid, f.read_text(), "b64"):
+              if write_jpeg(uid, f.read_text(), "b64:" + str(f.parent)):
                   ok.append(uid)
 
           parts = defaultdict(list)
-          for f in staging.iterdir():
-              if not f.is_file():
-                  continue
+          for f in files:
               m = re.fullmatch(r"([0-9a-f-]{36})[.]p([0-9]+)", f.name)
               if not m:
                   continue
               uid = m.group(1)
               if uid in b64_uids:
                   continue
-              parts[uid].append((int(m.group(2)), f))
+              # prefer photo-b64 over leftover staging parts
+              parts[uid].append((str(f.parent), int(m.group(2)), f))
           for uid, items in sorted(parts.items()):
-              items.sort()
-              blob = "".join(p.read_text() for _, p in items)
+              # if any photo-b64 parts exist, use only those
+              if any(parent == "photo-b64" for parent, _, _ in items):
+                  items = [x for x in items if x[0] == "photo-b64"]
+              items.sort(key=lambda x: x[1])
+              blob = "".join(p.read_text() for _, _, p in items)
               if write_jpeg(uid, blob, "parts:" + str(len(items))):
                   ok.append(uid)
           print("decoded", len(ok), ok)
@@ -86,7 +89,7 @@ jobs:
             echo "not ready"
             exit 0
           fi
-          rm -rf staging .decode-ok
+          rm -rf staging photo-b64 .decode-ok
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
