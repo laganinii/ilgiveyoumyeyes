@@ -1,80 +1,218 @@
 {
   "version": 2,
-  "publishedAt": "2026-08-31T08:23:15.000Z",
+  "publishedAt": "2026-10-02T14:00:06.477Z",
   "settings": {
     "title": "ilgiveyoumyeyes",
     "subtitle": "Photo portfolio",
     "name": "ilgiveyoumyeyes",
-    "tagline": "Small pictures, quietly kinetic.",
-    "about": "Personal photo work. Browse the reel, or open a folder in the catalogue.",
+    "tagline": "Round and round ",
+    "about": "Personal photo work. Browse the reel, or open a folder in the catalogue to see one body of work at a time.",
     "instagram": "https://www.instagram.com/ilgiveyoumyeyes/",
     "github": "",
     "email": "",
     "autoDrift": true,
-    "speed": 30,
+    "speed": 52,
     "adminPinHash": "c7267965fc2c85a27bc9fd33f965edd08415e75ded660897e66c54841215d94d"
   },
-  "folders": [],
+  "folders": [
+    {
+      "id": "all-work",
+      "name": "All work",
+      "blurb": "Everything in the reel",
+      "order": 0,
+      "createdAt": 0
+    }
+  ],
   "photos": [
     {
-      "id": "509392df-5228-42c2-9d29-444c882c4715",
-      "caption": "Apple Cork",
+      "id": "6259ece2-0d54-4efb-8936-12b4db3e13e5",
+      "caption": "ANLG2855",
       "row": 0,
       "order": 0,
       "folderId": "",
-      "src": "photos/509392df-5228-42c2-9d29-444c882c4715.jpg",
-      "width": 1400,
-      "height": 792
-    },
-    {
-      "id": "21161c6c-4ffe-4599-93ec-6726fce105fa",
-      "caption": "Cork, night",
-      "row": 0,
-      "order": 1,
-      "folderId": "",
-      "src": "photos/21161c6c-4ffe-4599-93ec-6726fce105fa.jpg",
-      "width": 1064,
-      "height": 1600
-    },
-    {
-      "id": "da20cf6b-9cda-483c-984d-2c8a053bb53e",
-      "caption": "Light",
-      "row": 1,
-      "order": 0,
-      "folderId": "",
-      "src": "photos/da20cf6b-9cda-483c-984d-2c8a053bb53e.jpg",
-      "width": 1400,
+      "src": "photos/6259ece2-0d54-4efb-8936-12b4db3e13e5.jpg",
+      "width": 1050,
       "height": 1400
     },
     {
-      "id": "bc45140c-5d06-495f-8f6b-071de5c2d0b6",
-      "caption": "The Roundy",
-      "row": 1,
+      "id": "7b806972-620c-4417-b76d-b95ad3d19dac",
+      "caption": "ANLG2836",
+      "row": 0,
       "order": 1,
       "folderId": "",
-      "src": "photos/bc45140c-5d06-495f-8f6b-071de5c2d0b6.jpg",
-      "width": 1064,
-      "height": 1600
+      "src": "photos/7b806972-620c-4417-b76d-b95ad3d19dac.jpg",
+      "width": 1050,
+      "height": 1400
     },
     {
-      "id": "b7343179-561d-4ae9-adde-01e8a772a3d6",
-      "caption": "Birds",
-      "row": 2,
-      "order": 0,
+      "id": "58e5bdc7-7b8c-4ab6-95ed-0bd464463173",
+      "caption": "ANLG2797",
+      "row": 0,
+      "order": 2,
       "folderId": "",
-      "src": "photos/b7343179-561d-4ae9-adde-01e8a772a3d6.jpg",
-      "width": 1600,
-      "height": 1064
+      "src": "photos/58e5bdc7-7b8c-4ab6-95ed-0bd464463173.jpg",
+      "width": 1050,
+      "height": 1400
     },
     {
-      "id": "0b49e3fb-f77b-4467-be57-dffc3c845f69",
-      "caption": "Birds",
-      "row": 2,
-      "order": 1,
+      "id": "d834bc61-dae3-4a1c-a59d-e11d4d79080c",
+      "caption": "ANLG2757",
+      "row": 0,
+      "order": 3,
       "folderId": "",
-      "src": "photos/0b49e3fb-f77b-4467-be57-dffc3c845f69.jpg",
-      "width": 824,
-      "height": 1100
+      "src": "photos/d834bc61-dae3-4a1c-a59d-e11d4d79080c.jpg",
+      "width": 1400,
+      "height": 1050
+    },
+    {
+      "id": "a4efca3b-b740-4e6e-85d6-7ef4f1cccbf9",
+      "caption": "ANLG2747",
+      "row": 0,
+      "order": 4,
+      "folderId": "",
+      "src": "photos/a4efca3b-b740-4e6e-85d6-7ef4f1cccbf9.jpg",
+      "width": 1050,
+      "height": 1400
+    },
+    {
+      "id": "287fc3f7-a3fa-465b-8725-c66365a74a89",
+      "caption": "ANLG2569",
+      "row": 0,
+      "order": 5,
+      "folderId": "",
+      "src": "photos/287fc3f7-a3fa-465b-8725-c66365a74a89.jpg",
+      "width": 644,
+      "height": 1400
+    },
+    {
+      "id": "cee1e06a-7403-4726-ab40-16e16c63c9c5",
+      "caption": "ANLG2508",
+      "row": 0,
+      "order": 6,
+      "folderId": "",
+      "src": "photos/cee1e06a-7403-4726-ab40-16e16c63c9c5.jpg",
+      "width": 1050,
+      "height": 1400
+    },
+    {
+      "id": "7590f5c4-1a86-4d2b-8a5e-ab77c9e08520",
+      "caption": "ANLG1685",
+      "row": 0,
+      "order": 7,
+      "folderId": "",
+      "src": "photos/7590f5c4-1a86-4d2b-8a5e-ab77c9e08520.jpg",
+      "width": 1050,
+      "height": 1400
+    },
+    {
+      "id": "1a8bc046-aba9-4f11-89be-e2e281f0740d",
+      "caption": "ANLG1686",
+      "row": 0,
+      "order": 8,
+      "folderId": "",
+      "src": "photos/1a8bc046-aba9-4f11-89be-e2e281f0740d.jpg",
+      "width": 1050,
+      "height": 1400
+    },
+    {
+      "id": "e434de08-d50d-4d7f-bdb8-e8a4dd6469c6",
+      "caption": "ANLG0305",
+      "row": 0,
+      "order": 9,
+      "folderId": "",
+      "src": "photos/e434de08-d50d-4d7f-bdb8-e8a4dd6469c6.jpg",
+      "width": 1050,
+      "height": 1400
+    },
+    {
+      "id": "0dbc62ff-12e3-4083-86dd-0b65e085c2d8",
+      "caption": "ANLG0306",
+      "row": 0,
+      "order": 10,
+      "folderId": "",
+      "src": "photos/0dbc62ff-12e3-4083-86dd-0b65e085c2d8.jpg",
+      "width": 1050,
+      "height": 1400
+    },
+    {
+      "id": "f6d7be4b-0791-49f8-88ae-17d6f0b6bd60",
+      "caption": "ANLG0295",
+      "row": 0,
+      "order": 11,
+      "folderId": "",
+      "src": "photos/f6d7be4b-0791-49f8-88ae-17d6f0b6bd60.jpg",
+      "width": 1400,
+      "height": 1050
+    },
+    {
+      "id": "6b1d7381-8863-4289-bee6-eeedf276b3fd",
+      "caption": "ANLG0340",
+      "row": 0,
+      "order": 12,
+      "folderId": "",
+      "src": "photos/6b1d7381-8863-4289-bee6-eeedf276b3fd.jpg",
+      "width": 1400,
+      "height": 1050
+    },
+    {
+      "id": "4279d243-4fd5-459d-b83e-191dbe806953",
+      "caption": "ANLG0364",
+      "row": 0,
+      "order": 13,
+      "folderId": "",
+      "src": "photos/4279d243-4fd5-459d-b83e-191dbe806953.jpg",
+      "width": 1050,
+      "height": 1400
+    },
+    {
+      "id": "65ee52f8-6873-4701-8b56-ce15835bd674",
+      "caption": "ANLG0366",
+      "row": 0,
+      "order": 14,
+      "folderId": "",
+      "src": "photos/65ee52f8-6873-4701-8b56-ce15835bd674.jpg",
+      "width": 1050,
+      "height": 1400
+    },
+    {
+      "id": "9fdde716-e515-49a9-beee-4787b5ccd5b5",
+      "caption": "ANLG0473",
+      "row": 0,
+      "order": 15,
+      "folderId": "",
+      "src": "photos/9fdde716-e515-49a9-beee-4787b5ccd5b5.jpg",
+      "width": 1400,
+      "height": 788
+    },
+    {
+      "id": "f9d7f8ec-2063-4359-adec-d9cfaa41c8c2",
+      "caption": "ANLG0471",
+      "row": 0,
+      "order": 16,
+      "folderId": "",
+      "src": "photos/f9d7f8ec-2063-4359-adec-d9cfaa41c8c2.jpg",
+      "width": 788,
+      "height": 1400
+    },
+    {
+      "id": "b9e94cc2-663f-4bcb-95e8-b4f5db0063ba",
+      "caption": "ANLG0496",
+      "row": 0,
+      "order": 17,
+      "folderId": "",
+      "src": "photos/b9e94cc2-663f-4bcb-95e8-b4f5db0063ba.jpg",
+      "width": 1050,
+      "height": 1400
+    },
+    {
+      "id": "9c612fe6-b4e9-4c82-9337-4767c6653ca9",
+      "caption": "ANLG0583",
+      "row": 0,
+      "order": 18,
+      "folderId": "",
+      "src": "photos/9c612fe6-b4e9-4c82-9337-4767c6653ca9.jpg",
+      "width": 1400,
+      "height": 1050
     }
   ]
 }
